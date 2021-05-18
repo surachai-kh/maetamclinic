@@ -1,0 +1,42 @@
+<div class="row mt-4">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <mat-card>
+                    <h3>
+                        <mat-icon>lock</mat-icon>
+                        เข้าสู่ระบบ
+                    </h3>
+                    <form class="px-3 pb-3" [formGroup]="form" (submit)="onSubmit()">
+                        <mat-form-field class="d-block">
+                            <mat-label>อีเมล์</mat-label>
+                            <input matInput placeholder="ที่อยู่อีเมล์" formControlName="email" required>
+                            <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล์</mat-error>
+                            <mat-error *ngIf="form.get('email')!.hasError('email')">รูปแบบของอีเมลไม่ถูกต้อง</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="d-block">
+                            <mat-label>รหัสผ่าน</mat-label>
+                            <input type="password" matInput placeholder="รหัสผ่าน" formControlName="password" required>
+                            <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
+                        </mat-form-field>
+                        <button type="submit" class="mt1 mb-3 w-100" mat-raised-button color="primary">
+                            เข้าสู่ระบบ
+                        </button>
+                        <button type="submit" class="mt1 mb-3 w-100" mat-raised-button color="warn" 
+                        (click)="onLogin()">
+                            <mat-icon>email</mat-icon>
+                            Sign in with Google
+                        </button>
+                        <div class="text-center">
+                            <a routerLink="/authentication/forgot-password">ลืมรหัสผ่าน</a>
+                        </div>
+                        <div class="text-center">
+                            หากคุณยังไม่ได้ลงทะเบียน ? <a routerLink="/authentication/register">สมัครสมาชิก</a>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

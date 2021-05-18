@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "web-api-e9460": {
+      "hosting": {
+        "meatumtest": [
+          "web-api-e9460"
+        ]
+      }
+    }
+  }
+}

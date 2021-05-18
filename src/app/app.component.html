@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<div class="container py-4">
+    <router-outlet></router-outlet>
+</div>
+<!-- โหลดหน้าเว็บ -->
+<div class="loading" *ngIf="loading | async">
+    <mat-spinner></mat-spinner>
+</div>

@@ -1,0 +1,47 @@
+<div class="row mt-4">
+    <div class="col-lg-6 offset-lg-3">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <mat-card>
+                    <h3>
+                        <mat-icon>person</mat-icon>
+                        สมัครสมาชิก
+                    </h3>
+                    <form class="px-3 pb-3" [formGroup]="form" (submit)="onSubmit()">
+                        <mat-form-field class="d-block">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="กรุณากรอก อีเมล์" formControlName="email" required>
+                            <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล์</mat-error>
+                            <mat-error *ngIf="form.get('email')!.hasError('email')">รูปแบบของอีเมลไม่ถูกต้อง</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="d-block">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput placeholder="กรุณากรอก รหัสผ่าน" formControlName="password" required>
+                            <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="d-block">
+                            <mat-label>Confirm Password</mat-label>
+                            <input type="password" matInput placeholder="ยืนยันรหัสผ่าน" formControlName="cpassword">
+                            <mat-error *ngIf="form.get('cpassword')!.hasError('required')">
+                                กรุณายืนยันรหัสผ่าน
+                            </mat-error>
+                            <mat-error *ngIf="form.get('cpassword')!.hasError('notComparePassword')">
+                                คุณกรอกรหัสผ่านไม่ตรงกัน
+                            </mat-error>
+                        </mat-form-field>
+
+                        <button type="submit" class="mt1 mb-3 w-100" mat-raised-button color="primary">
+                            สมัครสมาชิก
+                        </button>
+
+                        <div class="text-center">
+                            หากคุณมีบัญชีอยู่แล้ว ? <a routerLink="/authentication/login">เข้าสู่ระบบ</a>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
