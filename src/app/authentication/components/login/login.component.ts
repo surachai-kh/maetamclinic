@@ -26,8 +26,18 @@ export class LoginComponent implements OnInit {
   }
 
   // login Email
-  onLogin() {
+  ongoogleLogin() {
     var provider = new firebase.auth.GoogleAuthProvider();
+    this.app.loading(true);
+    this.auth
+      .signInWithPopup(provider)
+      .then((user) => this.router.navigate(['/']))
+      .catch((error) => this.app.dialog(error.message))
+      .finally(() => this.app.loading(false));
+  }
+  //facebooklogin
+  onfacebookLogin() {
+    var provider = new firebase.auth.FacebookAuthProvider ();
     this.app.loading(true);
     this.auth
       .signInWithPopup(provider)

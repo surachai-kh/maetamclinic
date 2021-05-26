@@ -20,13 +20,18 @@
                             <input type="password" matInput placeholder="รหัสผ่าน" formControlName="password" required>
                             <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
                         </mat-form-field>
-                        <button type="submit" class="mt1 mb-3 w-100" mat-raised-button color="primary">
+                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary">
                             เข้าสู่ระบบ
                         </button>
-                        <button type="submit" class="mt1 mb-3 w-100" mat-raised-button color="warn" 
-                        (click)="onLogin()">
+                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="warn" 
+                        (click)="ongoogleLogin()">
                             <mat-icon>email</mat-icon>
                             Sign in with Google
+                        </button>
+                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary" 
+                        (click)="onfacebookLogin()">
+                            <mat-icon>facebook</mat-icon>
+                            Sign in with Facebook
                         </button>
                         <div class="text-center">
                             <a routerLink="/authentication/forgot-password">ลืมรหัสผ่าน</a>
