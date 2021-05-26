@@ -25,12 +25,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  //ส่งข้อมูล
-  onSubmit(){
-    if (this.form.invalid) return;
-    const { email } = this.form.value;
-    console.log(email);
-  }
+  
   /** สร้างฟอร์มข้อมูล */
   private createFormData() {
     this.form = this.fb.group({
@@ -48,13 +43,6 @@ export class ForgotPasswordComponent implements OnInit {
       .then(() => this.router.navigate(['/authentication/login']))
       .catch(err => this.app.dialog(err.message))
       .finally(() => this.app.loading(false));
-  }
-
-  /** สร้างฟอร์มข้อมูล */
-  private createFormData() {
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
-    });
   }
 
 }

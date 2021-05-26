@@ -25,13 +25,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
   // login Email
   ongoogleLogin() {
-=======
-  // login with Gmail
-  onLogin() {
->>>>>>> f36abb0fbcfcc7430880214a718f12b633f7c30e
     var provider = new firebase.auth.GoogleAuthProvider();
     this.app.loading(true);
     this.auth
@@ -40,7 +35,7 @@ export class LoginComponent implements OnInit {
       .catch((error) => this.app.dialog(error.message))
       .finally(() => this.app.loading(false));
   }
-<<<<<<< HEAD
+
   //facebooklogin
   onfacebookLogin() {
     var provider = new firebase.auth.FacebookAuthProvider ();
@@ -51,11 +46,8 @@ export class LoginComponent implements OnInit {
       .catch((error) => this.app.dialog(error.message))
       .finally(() => this.app.loading(false));
   }
-  /** บันทึกข้อมูล (สมัครสมาชิก) */
-=======
   
   /** เข้าสู่ระบบ */
->>>>>>> f36abb0fbcfcc7430880214a718f12b633f7c30e
   onSubmit() {
     if (this.form.invalid) return;
     const { email, password } = this.form.value;
