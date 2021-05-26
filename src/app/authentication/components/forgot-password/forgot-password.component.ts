@@ -29,19 +29,6 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmit(){
     if (this.form.invalid) return;
     const { email } = this.form.value;
-    console.log(email);
-  }
-  /** สร้างฟอร์มข้อมูล */
-  private createFormData() {
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-    });
-  }
-
-  //ส่งข้อมูล
-  onSubmit(){
-    if (this.form.invalid) return;
-    const { email } = this.form.value;
     this.app.loading(true);
     this.auth
       .sendPasswordResetEmail(email)
