@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   // login Email
   ongoogleLogin() {
 
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
       .catch((error) => this.app.dialog(error.message))
       .finally(() => this.app.loading(false));
   }
-  /** บันทึกข้อมูล (สมัครสมาชิก) */
   
   /** เข้าสู่ระบบ */
   onSubmit() {
