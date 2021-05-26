@@ -2,14 +2,17 @@
     <div class="col-lg-6 offset-lg-3">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <mat-card>
-                    <h3>
-                        <mat-icon>lock</mat-icon>
-                        เข้าสู่ระบบ
-                    </h3>
+                <mat-card class="head-card">
+                    <h2>
+                        <mat-icon>login</mat-icon>
+                         เข้าสู่ระบบ
+                    </h2>
+                </mat-card>
+                <mat-card class="bot-card">
+                    
                     <form class="px-3 pb-3" [formGroup]="form" (submit)="onSubmit()">
                         <mat-form-field class="d-block">
-                            <mat-label>อีเมล์</mat-label>
+                            <mat-label>ที่อยู่อีเมล์</mat-label>
                             <input matInput placeholder="ที่อยู่อีเมล์" formControlName="email" required>
                             <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล์</mat-error>
                             <mat-error *ngIf="form.get('email')!.hasError('email')">รูปแบบของอีเมลไม่ถูกต้อง</mat-error>
@@ -20,13 +23,20 @@
                             <input type="password" matInput placeholder="รหัสผ่าน" formControlName="password" required>
                             <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
                         </mat-form-field>
+<<<<<<< HEAD
                         <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary">
                             เข้าสู่ระบบ
                         </button>
                         <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="warn" 
                         (click)="ongoogleLogin()">
+=======
+                        <button type="submit" class="mt-3 mb-2 w-100" mat-raised-button color="primary">
+                            เข้าสู่ระบบ
+                        </button>
+                        <button type="submit" class="mb-3 w-100" mat-raised-button color="warn" (click)="onLogin()">
+>>>>>>> f36abb0fbcfcc7430880214a718f12b633f7c30e
                             <mat-icon>email</mat-icon>
-                            Sign in with Google
+                            เข้าสู่ระบบด้วยบัญชี Gmail
                         </button>
                         <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary" 
                         (click)="onfacebookLogin()">
@@ -34,10 +44,10 @@
                             Sign in with Facebook
                         </button>
                         <div class="text-center">
-                            <a routerLink="/authentication/forgot-password">ลืมรหัสผ่าน</a>
+                            <a routerLink="/authentication/forgot-password">ลืมรหัสผ่าน?</a>
                         </div>
                         <div class="text-center">
-                            หากคุณยังไม่ได้ลงทะเบียน ? <a routerLink="/authentication/register">สมัครสมาชิก</a>
+                            คุณยังไม่ได้สมัครสมาชิก? <a routerLink="/authentication/register">สมัครสมาชิก</a>
                         </div>
                     </form>
                 </mat-card>

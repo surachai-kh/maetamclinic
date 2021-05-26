@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBbdVEu8MQExPPHSVI795aWqMiXS7fqeNM",
-    authDomain: "web-api-e9460.firebaseapp.com",
-    projectId: "web-api-e9460",
-    storageBucket: "web-api-e9460.appspot.com",
-    messagingSenderId: "904909192407",
-    appId: "1:904909192407:web:3ee91746d5b5d71132c492",
-    measurementId: "G-EJLMSM4KYB"
+    apiKey: "AIzaSyDjVNsOCku4IJJ8zXvpchpaG2khd9WPasU",
+    authDomain: "maetamvetclinic.firebaseapp.com",
+    projectId: "maetamvetclinic",
+    storageBucket: "maetamvetclinic.appspot.com",
+    messagingSenderId: "1075406894490",
+    appId: "1:1075406894490:web:8916157783376c9dd6b623",
+    measurementId: "G-1H629CF7WK"
   }
 };
 

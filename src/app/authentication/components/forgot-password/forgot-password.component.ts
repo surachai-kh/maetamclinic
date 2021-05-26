@@ -38,4 +38,23 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
+  //ส่งข้อมูล
+  onSubmit(){
+    if (this.form.invalid) return;
+    const { email } = this.form.value;
+    this.app.loading(true);
+    this.auth
+      .sendPasswordResetEmail(email)
+      .then(() => this.router.navigate(['/authentication/login']))
+      .catch(err => this.app.dialog(err.message))
+      .finally(() => this.app.loading(false));
+  }
+
+  /** สร้างฟอร์มข้อมูล */
+  private createFormData() {
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
+
 }
