@@ -1,9 +1,9 @@
 {
   "targets": {
-    "web-api-e9460": {
+    "maetamvetclinic": {
       "hosting": {
-        "meatumtest": [
-          "web-api-e9460"
+        "maetam-clinic": [
+          "maetamvetclinic"
         ]
       }
     }

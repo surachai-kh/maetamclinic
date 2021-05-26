@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // login Email
+  // login with Gmail
   onLogin() {
     var provider = new firebase.auth.GoogleAuthProvider();
     this.app.loading(true);
@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       .catch((error) => this.app.dialog(error.message))
       .finally(() => this.app.loading(false));
   }
-  /** บันทึกข้อมูล (สมัครสมาชิก) */
+  
+  /** เข้าสู่ระบบ */
   onSubmit() {
     if (this.form.invalid) return;
     const { email, password } = this.form.value;

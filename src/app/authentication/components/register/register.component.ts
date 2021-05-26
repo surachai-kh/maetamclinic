@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from 'src/app/services/app.service';
-import {AngularFireAuth} from '@angular/fire/auth'
+import { AngularFireAuth} from '@angular/fire/auth'
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
