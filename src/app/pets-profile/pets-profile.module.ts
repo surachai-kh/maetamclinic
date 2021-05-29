@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PetsProfileRoutingModule } from './pets-profile-routing.module';
 import { PetsComponent } from './components/pets/pets.component';
 import { MaterialModule } from '../shareds/material-module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,9 @@ import { MaterialModule } from '../shareds/material-module';
   imports: [
     CommonModule,
     PetsProfileRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class PetsProfileModule { }
