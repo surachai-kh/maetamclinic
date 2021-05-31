@@ -1,0 +1,59 @@
+<mat-card>
+    <mat-card-title>
+        <mat-icon>list</mat-icon> วัคซีน
+    </mat-card-title>
+
+    <mat-card-content>
+        <div class="row">
+            <div class="col-lg-6">
+                <button routerLink="/vaccine/create" mat-raised-button color="primary" class="w-50">
+                    <mat-icon>add</mat-icon>เพิ่มข้อมูล
+                </button>
+            </div>
+            <div class="col-lg-6 text-right">
+                <mat-form-field class="w-40">
+                    <mat-label>ค้นหา</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+                <button type="button" mat-icon-button class="text-muted">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <table mat-table [dataSource]="[]" class="w-100">
+
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> # </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> ชื่อ </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> ชนิด </th>
+                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="serail">
+                <th mat-header-cell *matHeaderCellDef> เลขซีเรียล </th>
+                <td mat-cell *matCellDef="let element"> {{element.serail}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="exp">
+                <th class="text-right" mat-header-cell *matHeaderCellDef> วันหมดอายุ </th>
+                <td class="text-right" mat-cell *matCellDef="let element"> {{element.exp}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    </mat-card-content>
+</mat-card>

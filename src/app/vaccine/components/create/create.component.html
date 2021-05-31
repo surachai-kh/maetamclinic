@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <mat-card>
+            <mat-card-title class="py-2">
+                <mat-icon>add</mat-icon>เพิ่ม วัคซีน
+            </mat-card-title>
+            <mat-divider></mat-divider>
+
+            <mat-card-content class="p-3">
+
+                <form [formGroup]="form" (submit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <mat-form-field class="d-block">
+                                <mat-label>ชื่อ</mat-label>
+                                <input type="text" matInput formControlName="name" required>
+                                <mat-error *ngIf="form.get('name')!.hasError('required')">กรุณากรอกชื่อ</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <mat-form-field class="d-block">
+                                <mat-label>ชนิด</mat-label>
+                                <mat-select formControlName="type" required>
+                                    <mat-option [value]="type" *ngFor="let type of typevaccine">
+                                        {{ type }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="form.get('type')!.hasError('required')">กรุณาเลือก</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <mat-form-field class="d-block">
+                                <mat-label>เลขซีเรียล</mat-label>
+                                <input type="text" matInput formControlName="serail" required>
+                                <mat-error *ngIf="form.get('serail')!.hasError('required')">กรุณากรอกหมายเลขซีเรียล</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <mat-form-field class="d-block">
+                                <mat-label>วันหมดอายุ</mat-label>
+                                <input type="date" matInput formControlName="exp" required>
+                                <mat-error *ngIf="form.get('exp')!.hasError('required')">กรุณาระบุวันหมดอายุ</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button routerLink="/vaccine" mat-button class="w-100" type="button">
+                                <mat-icon>keyboard_backspace</mat-icon>ย้อนกลับ
+                            </button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button mat-raised-button color="primary" class="w-100">
+                                <mat-icon>save</mat-icon>บันทึก
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

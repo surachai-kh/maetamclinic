@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { AngularFireAuthGuard, emailVerified } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
-import { pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { redirectEmailVerified } from '../guards/redirecte-email.guard';
 import { PetsComponent } from './components/pets/pets.component';
 
-//ตรวจสอบการยืนยัน อีเมล์
-const redirectEmailVerified = (redirectURL: [any]) => {
-  return pipe(emailVerified, map(status => status || redirectURL))
-};
 
 const routes: Routes = [
-  { 
-    path:'', component:PetsComponent, 
+  {
+    path: '', component: PetsComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectEmailVerified(['/authentication/login'])}
+    data: { authGuardPipe: () => redirectEmailVerified(['/authentication/login']) }
   }
 ];
 
