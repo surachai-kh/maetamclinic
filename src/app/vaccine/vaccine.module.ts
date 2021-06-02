@@ -6,12 +6,14 @@ import { VaccineComponent } from './components/vaccine/vaccine.component';
 import { MaterialModule } from '../shareds/material-module';
 import { CreateComponent } from './components/create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateComponent } from './components/update/update.component';
 
 
 @NgModule({
   declarations: [
     VaccineComponent,
-    CreateComponent
+    CreateComponent,
+    UpdateComponent
     
   ],
   imports: [

@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
+import { Ivaccine } from '../../interfaces/vaccine.interface';
+import { VaccineService } from './services/vaccine.service';
 @Component({
   selector: 'app-vaccine',
   templateUrl: './vaccine.component.html',
   styleUrls: ['./vaccine.component.scss']
 })
-export class VaccineComponent implements OnInit {
+export class VaccineComponent implements OnInit, AfterViewInit {
 
 
   displayedColumns = [
@@ -13,15 +20,73 @@ export class VaccineComponent implements OnInit {
     'name',
     'type',
     'serail',
-    'exp'
+    'exp',
+    'action'
   ];
 
 
+  //สำหรับข้อมูลหน้าใน table
+  dataSource = new MatTableDataSource<Ivaccine>([]);
+
+  //จำนวนข้อมูลที่ต้องการแสดง paginator
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(
-    private db: AngularFirestore,
-  ) { }
+    private service: VaccineService,
+    private app: AppService,
+    private rt: Router
+  ) {
+    this.loadVaccine();
+  }
 
   ngOnInit(): void {
 
+  }
+
+  ngAfterViewInit () {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+  }
+
+  //ค้นหาข้อมูล
+  applyFilter(input: HTMLInputElement) {
+    const filterValue = input.value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  onUpdate(item: Ivaccine) {
+    this.rt.navigate(['/vaccine/update', item.id]);
+  }
+
+  //ลบข้อมูล
+
+  async onDelete(item: Ivaccine) {
+    const comfirm = await this.app.confirm("คุณต้องการลบใช่ หรือ ไม่");
+    if (!confirm) return;
+    this.app.loading(true);
+    this.service.getCollection
+      .doc(item.id).delete()
+      .then(() => {
+        this.app.dialog("ลบสำเร็จแล้ว");
+        this.loadVaccine();
+      })
+      .catch(error => this.app.dialog(error.message))
+      .finally(() => this.app.loading(false));
+  }
+
+  //โหลดข้อมูล
+
+  private loadVaccine() {
+    this.service.getCollection.get().subscribe((querySnapshot) => {
+      this.dataSource.data = [];
+      querySnapshot.forEach((doc) => {
+        this.dataSource.data.push({
+          ...doc.data(), id: doc.id
+        });
+        this.dataSource.data.sort((a, b) => b.created - a.created).map((m, index) => m.index = index+1);
+        this.dataSource._updateChangeSubscription();
+      });
+    });
   }
 }

@@ -2,11 +2,12 @@
     <div class="col-lg-6 offset-lg-3">
         <mat-card>
             <mat-card-title class="py-2">
-                <mat-icon>add</mat-icon>เพิ่มข้อมูล
+                <mat-icon>edit</mat-icon>แก้ไขข้อมูล
+                <span class="text-danger">"{{vaccineName}}"</span>
             </mat-card-title>
             <mat-divider></mat-divider>
 
-            <mat-card-content class="p-3">
+            <mat-card-content class="p-3" *ngIf="form">
 
                 <form [formGroup]="form" (submit)="onSubmit()">
                     <div class="row">
@@ -34,7 +35,8 @@
                             <mat-form-field class="d-block">
                                 <mat-label>เลขซีเรียล</mat-label>
                                 <input type="text" matInput formControlName="serail" required>
-                                <mat-error *ngIf="form.get('serail')!.hasError('required')">กรุณากรอกหมายเลขซีเรียล</mat-error>
+                                <mat-error *ngIf="form.get('serail')!.hasError('required')">กรุณากรอกหมายเลขซีเรียล
+                                </mat-error>
                             </mat-form-field>
                         </div>
 
