@@ -10,7 +10,7 @@
                 </mat-card>
                 <mat-card class="bot-card">
                     
-                    <form class="px-3 pb-3" [formGroup]="form" (submit)="onSubmit()">
+                    <form class="px-3 pb-3" [formGroup]="form">
                         <mat-form-field class="d-block">
                             <mat-label>ที่อยู่อีเมล์</mat-label>
                             <input matInput placeholder="ที่อยู่อีเมล์" formControlName="email" required>
@@ -23,7 +23,7 @@
                             <input type="password" matInput placeholder="รหัสผ่าน" formControlName="password" required>
                             <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
                         </mat-form-field>
-                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary">
+                        <button (click)="onSubmit()" type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary">
                             เข้าสู่ระบบ
                         </button>
                         <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="warn" 
