@@ -43,7 +43,7 @@ export class PetsComponent implements OnInit {
     };
     this.petsRef.push(data)
       .then(() => {
-        this.app.dialog('เพิ่มสำเร็จ');
+        this.app.successAlert("เพิ่มสำเร็จ");
         this.form.reset();
         f.resetForm();
       })
