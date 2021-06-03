@@ -1,23 +1,27 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="column">
             <div class="card-one">
                 <h1>Maetam vet clinic</h1>
-                <h3>คลินิกแม่ต๋ำรักษาสัตว์</h3>
+                <h3><a class="brand-link" href="https://www.facebook.com/maetamvetclinic" target="_blank">
+                        <mat-icon style="font-size: 27px;">facebook</mat-icon>
+                        คลินิกแม่ต๋ำรักษาสัตว์
+                        <mat-icon>link</mat-icon>
+                    </a></h3>
                 <img src="https://firebasestorage.googleapis.com/v0/b/maetamvetclinic.appspot.com/o/web-images%2Flogin-logo.png?alt=media&token=be2ef9e4-62cb-45a4-9931-ea59c5c1eb2f"
                     alt="Login logo">
             </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="col">
+        <div class="column">
             <mat-card>
                 <div class="card-two">
                     <h2>LOGIN</h2>
                     <form class="px-3 pb-3" [formGroup]="form">
                         <mat-form-field class="d-block">
-                            <mat-label>ที่อยู่อีเมล์</mat-label>
-                            <input matInput placeholder="ที่อยู่อีเมล์" formControlName="email" required>
-                            <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล์</mat-error>
+                            <mat-label>ที่อยู่อีเมล</mat-label>
+                            <input matInput placeholder="ที่อยู่อีเมล" formControlName="email" required>
+                            <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล</mat-error>
                             <mat-error *ngIf="form.get('email')!.hasError('email')">รูปแบบของอีเมลไม่ถูกต้อง</mat-error>
                         </mat-form-field>
 
@@ -26,7 +30,7 @@
                             <input type="password" matInput placeholder="รหัสผ่าน" formControlName="password" required>
                             <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
                         </mat-form-field>
-                        <button (click)="onSubmit()" type="submit" class="button-signin mt-2 mb-3 w-100"
+                        <button (click)="onSubmit()" type="submit" class="button-signin mt-4 mb-3 w-100"
                             mat-raised-button>
                             เข้าสู่ระบบ
                         </button>

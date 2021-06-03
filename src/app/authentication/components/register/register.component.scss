@@ -1,12 +1,33 @@
-.head-card{
+mat-card {
     text-align: center;
-    color: white;
-    background-color: rgb(17, 143, 201);
-    border-top-left-radius: 14px;
-    border-top-right-radius: 16px;
+    margin-left: 120px;
+    width: 380px;
+    border-radius: 16px;
 }
 
-.bot-card{
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
+.btn-regis {
+    color: white;
+    background-color: rgb(27, 199, 119);
+}
+
+@media screen and (max-width: 750px) {
+    .column {
+        width: 100%;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgb(238, 97, 32);
+}
+
+.card-two {
+    text-align: center;
+    margin-left: 130px;
+    margin-top: 90px;
 }

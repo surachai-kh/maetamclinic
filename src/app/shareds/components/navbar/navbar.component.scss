@@ -6,8 +6,18 @@ a {
     }
 }
 
-mat-toolbar {
-    background-color: #f0f0f4;
+.mat-elevation-z3 {
+    background-color: #ffffff;
+    position: relative;
+}
+
+.container{
+    margin: 0px;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    height: 55px;
 }
 
 .nav-menu {

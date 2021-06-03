@@ -7,6 +7,10 @@ mat-card-subtitle {
     text-align: center;
 }
 
+button {
+    outline: none;
+}
+
 .button-signin {
     color: white;
     background-color: rgb(44, 218, 116);
@@ -23,20 +27,49 @@ h2 {
 }
 
 h1 {
-    margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 15px;
     font-weight: bold;
+    font-size: 40px;
     color: rgb(27, 155, 155);
 }
 
 h3 {
-    font-size: 20px;
-    color: rgb(22, 120, 185);
+    vertical-align: text-bottom;
+
+    a {
+        text-decoration: none;
+        font-size: 29px;
+        color: rgb(6, 136, 223);
+
+
+        .brand-link {
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: rgb(6, 94, 177);
+        }
+    }
+}
+
+.column {
+    float: right;
+    width: 50%;
 }
 
 .card-one {
+    padding: 10px;
     text-align: start;
-    margin-right: 0px;
-    margin-top: 70px;
-    margin-left: 250px;
+    margin-top: 10px;
+    margin-left: 20px;
+
+    img {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .column {
+        width: 100%;
+    }
 }

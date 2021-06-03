@@ -1,43 +1,44 @@
-<div class="row mt-4">
-    <div class="col-lg-6 offset-lg-3">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <mat-card class="head-card">
-                    <h2>
-                        <mat-icon>person_add</mat-icon>
+<div class="container-fluid">
+    <div class="row">
+        <div class="column">
+            <h1>สมัครสมาชิก</h1>
+            <mat-card>
+                <form class="px-3 pb-3" [formGroup]="form" (submit)="onSubmit()">
+                    <mat-form-field class="d-block">
+                        <mat-label>ที่อยู่อีเมล</mat-label>
+                        <input matInput placeholder="กรอกที่อยู่อีเมล" formControlName="email" required>
+                        <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล</mat-error>
+                        <mat-error *ngIf="form.get('email')!.hasError('email')">รูปแบบของอีเมลไม่ถูกต้อง</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="d-block">
+                        <mat-label>รหัสผ่าน</mat-label>
+                        <input type="password" matInput placeholder="กรอกรหัสผ่าน" formControlName="password" required>
+                        <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="d-block">
+                        <mat-label>ยืนยันรหัสผ่าน</mat-label>
+                        <input type="password" matInput placeholder="กรุณากรอกรหัสผ่านอีกครั้ง"
+                            formControlName="cpassword">
+                        <mat-error *ngIf="form.get('cpassword')!.hasError('required')">กรุณายืนยันรหัสผ่าน</mat-error>
+                        <mat-error *ngIf="form.get('cpassword')!.hasError('notComparePassword')">รหัสผ่านไม่ตรงกัน
+                        </mat-error>
+                    </mat-form-field>
+                    <button type="submit" class="btn-regis mt-3 mb-3 w-100" mat-raised-button color="primary">
                         สมัครสมาชิก
-                    </h2>
-                </mat-card>
-                <mat-card class="bot-card">
-                    <form class="px-3 pb-3" [formGroup]="form" (submit)="onSubmit()">
-                        <mat-form-field class="d-block">
-                            <mat-label>ที่อยู่อีเมล์</mat-label>
-                            <input matInput placeholder="กรอกที่อยู่อีเมล์" formControlName="email" required>
-                            <mat-error *ngIf="form.get('email')!.hasError('required')">กรุณากรอกอีเมล์</mat-error>
-                            <mat-error *ngIf="form.get('email')!.hasError('email')">รูปแบบของอีเมลไม่ถูกต้อง</mat-error>
-                        </mat-form-field>
+                    </button>
 
-                        <mat-form-field class="d-block">
-                            <mat-label>รหัสผ่าน</mat-label>
-                            <input type="password" matInput placeholder="กรอกรหัสผ่าน" formControlName="password" required>
-                            <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
-                        </mat-form-field>
-
-                        <mat-form-field class="d-block">
-                            <mat-label>ยืนยันรหัสผ่าน</mat-label>
-                            <input type="password" matInput placeholder="กรุณากรอกรหัสผ่านอีกครั้ง" formControlName="cpassword">
-                            <mat-error *ngIf="form.get('cpassword')!.hasError('required')">กรุณายืนยันรหัสผ่าน</mat-error>
-                            <mat-error *ngIf="form.get('cpassword')!.hasError('notComparePassword')">รหัสผ่านไม่ตรงกัน</mat-error>
-                        </mat-form-field>
-                        <button type="submit" class="mt-3 mb-3 w-100" mat-raised-button color="primary">
-                            สมัครสมาชิก
-                        </button>
-
-                        <div class="text-center">
-                            คุณมีบัญชีอยู่แล้ว? <a routerLink="/authentication/login">เข้าสู่ระบบ</a>
-                        </div>
-                    </form>
-                </mat-card>
+                    <div class="text-center">
+                        คุณมีบัญชีอยู่แล้ว? <a routerLink="/authentication/login">เข้าสู่ระบบ</a>
+                    </div>
+                </form>
+            </mat-card>
+        </div>
+        <div class="column">
+            <div class="card-two">
+                <img src="https://firebasestorage.googleapis.com/v0/b/maetamvetclinic.appspot.com/o/web-images%2Flogin-logo.png?alt=media&token=be2ef9e4-62cb-45a4-9931-ea59c5c1eb2f"
+                    alt="Login logo">
             </div>
         </div>
     </div>
