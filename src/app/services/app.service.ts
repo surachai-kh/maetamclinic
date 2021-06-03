@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
+import Swal from 'sweetalert2';
 import { ConfirmComponent } from '../shareds/components/confirm/confirm.component';
 
 @Injectable({
@@ -39,5 +40,13 @@ export class AppService {
       data: message,
       disableClose: true
     }).afterClosed().toPromise<boolean>();
+  }
+  successAlert (message: string) {
+    Swal.fire({
+      icon: 'success',
+      title: message,
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 }
