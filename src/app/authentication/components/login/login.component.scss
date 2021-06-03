@@ -1,12 +1,42 @@
-.head-card{
-    text-align: center;
-    color: white;
-    background-color: rgb(17, 143, 201);
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
+mat-card {
+    width: 380px;
+    border-radius: 16px;
 }
 
-.bot-card{
-    border-bottom-left-radius: 14px;
-    border-bottom-right-radius: 14px;
+mat-card-subtitle {
+    text-align: center;
+}
+
+.button-signin {
+    color: white;
+    background-color: rgb(44, 218, 116);
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(235, 57, 116);
+    text-align: end;
+    margin-right: 15px;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: rgb(27, 155, 155);
+}
+
+h3 {
+    font-size: 20px;
+    color: rgb(22, 120, 185);
+}
+
+.card-one {
+    text-align: start;
+    margin-right: 0px;
+    margin-top: 70px;
+    margin-left: 250px;
 }

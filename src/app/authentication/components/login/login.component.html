@@ -1,15 +1,18 @@
-<div class="row mt-4">
-    <div class="col-lg-6 offset-lg-3">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <mat-card class="head-card">
-                    <h2>
-                        <mat-icon>login</mat-icon>
-                         เข้าสู่ระบบ
-                    </h2>
-                </mat-card>
-                <mat-card class="bot-card">
-                    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card-one">
+                <h1>Maetam vet clinic</h1>
+                <h3>คลินิกแม่ต๋ำรักษาสัตว์</h3>
+                <img src="https://firebasestorage.googleapis.com/v0/b/maetamvetclinic.appspot.com/o/web-images%2Flogin-logo.png?alt=media&token=be2ef9e4-62cb-45a4-9931-ea59c5c1eb2f"
+                    alt="Login logo">
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="col">
+            <mat-card>
+                <div class="card-two">
+                    <h2>LOGIN</h2>
                     <form class="px-3 pb-3" [formGroup]="form">
                         <mat-form-field class="d-block">
                             <mat-label>ที่อยู่อีเมล์</mat-label>
@@ -23,18 +26,20 @@
                             <input type="password" matInput placeholder="รหัสผ่าน" formControlName="password" required>
                             <mat-error *ngIf="form.get('password')!.hasError('required')">กรุณากรอกรหัสผ่าน</mat-error>
                         </mat-form-field>
-                        <button (click)="onSubmit()" type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary">
+                        <button (click)="onSubmit()" type="submit" class="button-signin mt-2 mb-3 w-100"
+                            mat-raised-button>
                             เข้าสู่ระบบ
                         </button>
-                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="warn" 
-                        (click)="ongoogleLogin()">
+                        <mat-card-subtitle>หรือ</mat-card-subtitle>
+                        <button type="submit" class="mt-0 mb-2 w-100" mat-raised-button color="warn"
+                            (click)="ongoogleLogin()">
                             <mat-icon>email</mat-icon>
                             เข้าสู่ระบบด้วยบัญชี Gmail
                         </button>
-                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary" 
-                        (click)="onfacebookLogin()">
+                        <button type="submit" class="mt-2 mb-2 w-100" mat-raised-button color="primary"
+                            (click)="onfacebookLogin()">
                             <mat-icon>facebook</mat-icon>
-                            Sign in with Facebook
+                            เข้าสู่ระบบด้วยบัญชี Facebook
                         </button>
                         <div class="text-center">
                             <a routerLink="/authentication/forgot-password">ลืมรหัสผ่าน?</a>
@@ -43,8 +48,8 @@
                             คุณยังไม่ได้สมัครสมาชิก? <a routerLink="/authentication/register">สมัครสมาชิก</a>
                         </div>
                     </form>
-                </mat-card>
-            </div>
+                </div>
+            </mat-card>
         </div>
     </div>
 </div>

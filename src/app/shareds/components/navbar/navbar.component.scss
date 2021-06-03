@@ -1,25 +1,61 @@
 a {
-    color: white;
+    color: rgb(100, 100, 100);
 
     &.brand-link {
         text-decoration: none;
     }
 }
 
+mat-toolbar {
+    background-color: #f0f0f4;
+}
+
+.nav-menu {
+    margin-right: 60px;
+}
+
 .nav-menu a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgb(128, 128, 128);
     text-decoration: none;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 14px;
     transition: all 0.2s ease-in-out;
-    
+
     &:hover,
     &.active {
-        color: white;
+        color: rgb(236, 45, 141);
     }
 
 }
 
 mat-icon {
-    vertical-align: text-bottom;
+    font-size: 16px;
+    vertical-align: text-top;
 }
+
+.button-login {
+    color: white;
+    background-color: rgb(40, 174, 197);
+    outline: none;
+}
+
+span {
+    font-size: 18px;
+}
+
+
+
+// mat-sidenav {
+//     width: 280px;
+//     padding:15px;
+// }
+// .mat-drawer { 
+//     background-color: #023075;
+//     color:#fff
+// }
+// .main-content {
+//     padding:20px;
+// }
+// .toolbar-spacer {
+//     flex: 1 1 auto;
+// }
