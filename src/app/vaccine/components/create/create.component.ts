@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
     this.service
     .saveCollection(this.form.value)
     .then(() => {
-      this.app.dialog('เพิ่มสำเร็จ');
+      this.app.successAlert('เพิ่มสำเร็จ');
       this.rt.navigate(['/vaccine']);
     })
     .catch(error => this.app.dialog(error.message))

@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
+import Swal from 'sweetalert2';
 import { Ivaccine } from '../../interfaces/vaccine.interface';
 import { VaccineService } from './services/vaccine.service';
 @Component({
@@ -13,7 +13,6 @@ import { VaccineService } from './services/vaccine.service';
   styleUrls: ['./vaccine.component.scss']
 })
 export class VaccineComponent implements OnInit, AfterViewInit {
-
 
   displayedColumns = [
     'id',
@@ -44,9 +43,9 @@ export class VaccineComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit () {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   //ค้นหาข้อมูล
@@ -54,39 +53,46 @@ export class VaccineComponent implements OnInit, AfterViewInit {
     const filterValue = input.value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
 
   onUpdate(item: Ivaccine) {
     this.rt.navigate(['/vaccine/update', item.id]);
   }
 
   //ลบข้อมูล
-
-  async onDelete(item: Ivaccine) {
-    const comfirm = await this.app.confirm("คุณต้องการลบใช่ หรือ ไม่");
-    if (!confirm) return;
-    this.app.loading(true);
-    this.service.getCollection
-      .doc(item.id).delete()
-      .then(() => {
-        this.app.dialog("ลบสำเร็จแล้ว");
+  onDelete(item: Ivaccine) {
+    Swal.fire({
+      title: "คุณต้องการลบใช่ หรือ ไม่",
+      text: '',
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      showCancelButton: true,
+      confirmButtonText: "ใช่",
+      cancelButtonText: "ไม่"
+    })
+      .then((getCollection) => {
+        if (!getCollection.value) return;
+        this.app.loading(true);
+        this.service.getCollection.doc(item.id).delete();
+        this.app.successAlert("ลบสำเร็จ");
         this.loadVaccine();
       })
-      .catch(error => this.app.dialog(error.message))
+      .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
 
   //โหลดข้อมูล
-
   private loadVaccine() {
     this.service.getCollection.get().subscribe((querySnapshot) => {
       this.dataSource.data = [];
-      querySnapshot.forEach((doc) => {
-        this.dataSource.data.push({
-          ...doc.data(), id: doc.id
-        });
-        this.dataSource.data.sort((a, b) => b.created - a.created).map((m, index) => m.index = index+1);
-        this.dataSource._updateChangeSubscription();
+      querySnapshot.forEach(doc => {
+        this.dataSource.data.push({ ...doc.data(), id: doc.id });
       });
+      this.dataSource.data
+        .sort((a, b) => b.created - a.created)
+        .map((m, index) => m.index = index + 1);
+      this.dataSource._updateChangeSubscription();
     });
   }
 }

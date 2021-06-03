@@ -45,10 +45,10 @@ export class UpdateComponent implements OnInit {
     this.service
       .updateCollection(this.vaccineId,this.form.value)
       .then(() => {
-        this.app.dialog('แก้ไข้ข้อมูลสำเร็จ');
+        this.app.successAlert('แก้ไข้ข้อมูลสำเร็จ');
         this.rt.navigate(['/vaccine']);
       })
-      .catch(error => this.app.dialog(error.message))
+      .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
 
@@ -58,7 +58,7 @@ export class UpdateComponent implements OnInit {
     try {
       const doc = await this.service.getCollection.doc(this.vaccineId).get().toPromise();
       const data = doc.data();
-      if (!doc.exists || !data) throw new Error("ไม่พบข้อมูลดังกล่าว"); 
+      if (!doc.exists || !data) this.app.errorAlert("ไม่พบข้อมูลดังกล่าว"); 
       this.vaccineName = data.name;
       this.form = this.fb.group({
         name: [data.name, Validators.required],
@@ -68,7 +68,6 @@ export class UpdateComponent implements OnInit {
       });
     }
     catch (error) {
-      this.app.dialog(error.message);
       this.rt.navigate(['/vaccine']);
     }
     finally {

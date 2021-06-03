@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { FormBuilder, FormGroup, FormGroupDirective, NgModel, Validators } from '@angular/forms';
 import { AppService } from 'src/app/services/app.service';
+import Swal from 'sweetalert2';
 import { Pets } from '../interfaces/pets.interface';
 
 @Component({
@@ -47,17 +48,28 @@ export class PetsComponent implements OnInit {
         this.form.reset();
         f.resetForm();
       })
-      .catch(error => this.app.dialog(error.message));
+      .catch(error => this.app.errorAlert(error.message));
   }
 
   // ลบข้อมูล
-  async onDelete(item: Pets) {
-    const confirm = await this.app.confirm('คุณต้องการลบใช่ หรือ ไม่');
-    if (!confirm) return;
-    this.app.loading(true);
-    this.petsRef.remove(item.id)
-      .then(() => this.app.dialog('ลบสำเร็จ'))
-      .catch(error => this.app.dialog(error.message))
+  onDelete(item: Pets) {
+    Swal.fire({
+      title: "คุณต้องการลบใช่ หรือ ไม่",
+      text:'',
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      showCancelButton: true,
+      confirmButtonText: "ใช่",
+      cancelButtonText: "ไม่"
+    })
+      .then((petsRef) => {
+        if(!petsRef.value) return;
+        this.app.loading(true);
+        this.petsRef.remove(item.id)
+        this.app.successAlert("ลบสำเร็จ");
+      })
+      .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
 
@@ -74,8 +86,8 @@ export class PetsComponent implements OnInit {
       name: model.value,
       updated: new Date().getTime()
     })
-      .then(() => this.app.dialog('แก้ไขสำเร็จ'))
-      .catch(error => this.app.dialog(error.message))
+      .then(() => this.app.successAlert("แก้ไขสำเร็จ"))
+      .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
 

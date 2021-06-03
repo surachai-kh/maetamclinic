@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.app.loading(true);
     this.auth.signOut()
     .then(() => {
-      this.app.dialog('ออกจากระบบแล้ว')
+      this.app.successAlert('ออกจากระบบแล้ว')
       this.router.navigate(['/authentication/login'])
     })
     .catch(err => this.app.dialog(err.message))
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   onVerifyEmail() {
     this.app.loading(true);
     this.userLogin.sendEmailVerification()
-    .then(() => this.app.dialog('ส่งการยืนยันไปที่อีเมล์แล้ว'))
+    .then(() => this.app.successAlert('ส่งการยืนยันไปที่อีเมล์แล้ว'))
     .catch(err => this.app.dialog(err.message))
     .finally(() => this.app.loading(false))
   }

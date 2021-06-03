@@ -49,4 +49,13 @@ export class AppService {
       timer: 1500
     })
   }
+  errorAlert(message: string) {
+    Swal.fire({
+      icon: 'error',
+      title: message,
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  
 }

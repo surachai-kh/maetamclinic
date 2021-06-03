@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.auth
       .signInWithPopup(provider)
       .then((user) => this.router.navigate(['/']))
-      .catch((error) => this.app.dialog(error.message))
+      .catch((error) => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
   //facebooklogin
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.auth
       .signInWithPopup(provider)
       .then((user) => this.router.navigate(['/']))
-      .catch((error) => this.app.dialog(error.message))
+      .catch((error) => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
   
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     this.app.loading(true);
     this.auth.signInWithEmailAndPassword(email, password)
       .then((user) => this.router.navigate(['/']))
-      .catch((error) => this.app.dialog("อีเมลล์หรือรหัสผ่านไม่ถูกต้อง"))
+      .catch((error) => this.app.errorAlert("อีเมลล์หรือรหัสผ่านไม่ถูกต้อง"))
       .finally(() => this.app.loading(false));
   }
 

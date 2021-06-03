@@ -33,6 +33,6 @@ export class VaccineService {
     return this.getCollection.doc(id).update(data);
   }
 
-
+  
 
 }
