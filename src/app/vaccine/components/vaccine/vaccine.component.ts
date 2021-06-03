@@ -52,8 +52,12 @@ export class VaccineComponent implements OnInit, AfterViewInit {
   applyFilter(input: HTMLInputElement) {
     const filterValue = input.value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
-  
+
 
   onUpdate(item: Ivaccine) {
     this.rt.navigate(['/vaccine/update', item.id]);
