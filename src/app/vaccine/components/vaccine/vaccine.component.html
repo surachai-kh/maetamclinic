@@ -1,22 +1,22 @@
 <mat-card>
     <mat-card-title>
-        <mat-icon>list</mat-icon> วัคซีน
+        <mat-icon>medication</mat-icon> วัคซีน
     </mat-card-title>
 
     <mat-card-content>
         <div class="row">
-            <div class="col-lg-6">
-                <button routerLink="/vaccine/create" mat-raised-button color="primary" class="w-50">
-                    <mat-icon>add</mat-icon>เพิ่มข้อมูล
-                </button>
-            </div>
-            <div class="col-lg-6 text-right">
-                <mat-form-field class="w-40">
+            <div class="col-lg-6 text-left">
+                <mat-form-field class="search w-3">
                     <mat-label>ค้นหา</mat-label>
                     <input type="text" matInput #input>
                 </mat-form-field>
-                <button type="button" mat-icon-button class="text-muted" (click)="applyFilter(input)">
+                <button type="button" mat-icon-button class="btn-search text-muted" (click)="applyFilter(input)">
                     <mat-icon>search</mat-icon>
+                </button>
+            </div>
+            <div class="col-lg-6 text-right">
+                <button routerLink="/vaccine/create" mat-fab class="btn-add">
+                    <mat-icon>note_add</mat-icon>
                 </button>
             </div>
         </div>
@@ -24,14 +24,13 @@
 
         <table matSort mat-table [dataSource]="dataSource" class="w-100">
 
-
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> # </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ลำดับ </th>
                 <td mat-cell *matCellDef="let element"> {{element.index}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ชื่อ </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ชื่อวัคซีน </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
@@ -41,7 +40,7 @@
             </ng-container>
 
             <ng-container matColumnDef="serail">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> เลขซีเรียล </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> หมายเลขซีเรียล </th>
                 <td mat-cell *matCellDef="let element"> {{element.serail}} </td>
             </ng-container>
 
@@ -53,12 +52,12 @@
             <ng-container matColumnDef="action">
                 <th class="text-right" mat-header-cell *matHeaderCellDef> Action </th>
                 <td class="text-right" mat-cell *matCellDef="let element">
-                    <button (click)="onUpdate(element)" type="button" mat-icon-button>
-                        <mat-icon>edit</mat-icon>
+                    <button class="btn" (click)="onUpdate(element)" style="margin-right: 5px;" type="button" mat-mini-fab color="primary">
+                        <mat-icon style="font-size: 20px; vertical-align: middle;">edit</mat-icon>
                     </button>
 
-                    <button (click)="onDelete(element)" type="button" mat-icon-button color="warn">
-                        <mat-icon>delete</mat-icon>
+                    <button class="btn" (click)="onDelete(element)" type="button" mat-mini-fab color="warn">
+                        <mat-icon style="font-size: 20px; vertical-align: middle;">delete</mat-icon>
                     </button>
                 </td>
             </ng-container>

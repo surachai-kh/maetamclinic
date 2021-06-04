@@ -6,22 +6,19 @@ a {
     }
 }
 
-.mat-elevation-z3 {
-    background-color: #ffffff;
-    position: relative;
+mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.container{
-    margin: 0px;
+.mat-elevation-z3 {
+    background-color: #ffffff;
 }
 
 .mat-toolbar-row,
 .mat-toolbar-single-row {
     height: 55px;
-}
-
-.nav-menu {
-    margin-right: 60px;
 }
 
 .nav-menu a {
@@ -43,16 +40,20 @@ mat-icon {
     vertical-align: text-top;
 }
 
-.button-login {
+.btn-login {
     color: white;
     background-color: rgb(40, 174, 197);
     outline: none;
+    margin-left: 40px;
 }
 
 span {
     font-size: 18px;
 }
 
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
 
 
 // mat-sidenav {
@@ -65,7 +66,4 @@ span {
 // }
 // .main-content {
 //     padding:20px;
-// }
-// .toolbar-spacer {
-//     flex: 1 1 auto;
 // }
