@@ -1,0 +1,23 @@
+mat-card {
+    border-radius: 16px;
+}
+
+.row {
+    padding: 12px;
+}
+
+mat-card-title {
+    padding: 8px;
+    color: rgb(37, 189, 87);
+    margin-left: 20px;
+}
+
+.btn,
+.btn-add {
+    outline: none;
+}
+
+.btn-add {
+    background-color: rgb(50, 205, 102);
+    color: white;
+}

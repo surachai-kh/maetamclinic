@@ -1,27 +1,67 @@
 <mat-toolbar class="mat-toolbar mat-elevation-z3">
-            <a routerLink="/" class="brand-link">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/maetamvetclinic.appspot.com/o/web-images%2Fclinic-icon.png?alt=media&token=9b3c0083-d223-4bf0-8750-394c8248f5d2"
-                        height="25px" width="25px" alt="Clinic logo">
-                    <span class="ml-1">Maetam vet clinic</span>
-            </a>
-            <span class="toolbar-spacer"></span>
-            <div class="nav-menu ml-auto">
-                <a href="" class="mr-3" routerLinkActive="active">
-                    <mat-icon>person</mat-icon>Profile
-                </a>
-                <a routerLink="/pets-profile" class="mr-3" routerLinkActive="active">
-                    <mat-icon>pets</mat-icon>Pets Profile
-                </a>
-                <a href="" class="mr-3" routerLinkActive="active">
-                    <mat-icon>pending_actions</mat-icon>History
-                </a>
-                <a routerLink="/vaccine" class="mr-3" routerLinkActive="active">
-                    <mat-icon>colorize</mat-icon>Vaccine
-                </a>
-                <button routerLink="/authentication" class="btn-login" routerLinkActive="active" mat-flat-button>
-                    Login
-                </button>
+    <a routerLink="/" class="brand-link">
+        <img src="https://firebasestorage.googleapis.com/v0/b/maetamvetclinic.appspot.com/o/web-images%2Fclinic-icon.png?alt=media&token=9b3c0083-d223-4bf0-8750-394c8248f5d2"
+            height="25px" width="25px" alt="Clinic logo">
+        <span class="head-name ml-1">Maetam vet clinic</span>
+    </a>
+    <span class="toolbar-spacer"></span>
+    <div class="nav-menu ml-auto">
+        <a href="" class="mr-4" routerLinkActive="active">
+            <mat-icon>person</mat-icon>Profile
+        </a>
+        <a routerLink="/pets-profile" class="mr-4" routerLinkActive="active">
+            <mat-icon>pets</mat-icon>Pets Profile
+        </a>
+        <a href="" class="mr-4" routerLinkActive="active">
+            <mat-icon>pending_actions</mat-icon>History
+        </a>
+        <a routerLink="/vaccine" class="mr-4" routerLinkActive="active">
+            <mat-icon>medication</mat-icon>Vaccine
+        </a>
+        <button routerLink="/authentication" class="btn-login" routerLinkActive="active" mat-flat-button>
+            Login
+        </button>
+
+        <button class="noti-btn ml-2" style="background-color: rgb(212, 212, 212);" mat-icon-button
+            [matMenuTriggerFor]="noti" aria-label="Notification">
+            <mat-icon style="font-size: 25px; color: white;">notifications</mat-icon>
+        </button>
+        <mat-menu #noti="matMenu">
+            <div class="notification">
+                <mat-card-subtitle class="text-left">การแจ้งเตือน</mat-card-subtitle>
             </div>
+            <mat-divider></mat-divider>
+            <button routerLink="/" class="menu-btn" mat-menu-item>
+                <mat-icon style="margin-right: 0px;">today</mat-icon>
+                <span>การนัดหมาย</span>
+            </button>
+            <button routerLink="/" class="menu-btn" mat-menu-item>
+                <mat-icon style="margin-right: 0px;">colorize</mat-icon>
+                <span>กำหนดรับวัคซีน</span>
+            </button>
+        </mat-menu>
+
+        <button class="acc-btn ml-2" style="background-color: rgb(212, 212, 212);" mat-icon-button
+            [matMenuTriggerFor]="menu" aria-label="Account">
+            <mat-icon style="font-size: 25px; color: white;">person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <div class="account">
+                <mat-card-title>Account Name</mat-card-title>
+                <mat-card-subtitle>Account Email</mat-card-subtitle>
+            </div>
+            <mat-divider></mat-divider>
+            <button routerLink="/" class="menu-btn" mat-menu-item>
+                <mat-icon style="margin-right: 0px;">manage_accounts</mat-icon>
+                <span>จัดการโปรไฟล์</span>
+            </button>
+            <button class="menu-btn" mat-menu-item>
+                <mat-icon style="margin-right: 0px;">logout</mat-icon>
+                <span>ออกจากระบบ</span>
+            </button>
+        </mat-menu>
+
+    </div>
 </mat-toolbar>
 
 

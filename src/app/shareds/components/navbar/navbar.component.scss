@@ -25,7 +25,7 @@ mat-toolbar {
     color: rgb(128, 128, 128);
     text-decoration: none;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
     transition: all 0.2s ease-in-out;
 
     &:hover,
@@ -48,6 +48,10 @@ mat-icon {
 }
 
 span {
+    font-size: 13px;
+}
+
+.head-name {
     font-size: 18px;
 }
 
@@ -55,6 +59,20 @@ span {
     flex: 1 1 auto;
 }
 
+.menu-btn,
+.acc-btn,
+.noti-btn {
+    outline: none;
+}
+
+.account {
+    text-align: center;
+    padding: 10px;
+}
+
+.notification {
+    margin-left: 10px;
+}
 
 // mat-sidenav {
 //     width: 280px;

@@ -1,8 +1,12 @@
-.account-icon{
+.account-icon {
     font-size: 45px;
 }
 
 a.text-warning {
     cursor: pointer;
     text-decoration: none;
+}
+
+mat-card {
+    border-radius: 16px;
 }
