@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { AppService } from './services/app.service';
 
@@ -9,9 +8,14 @@ import { AppService } from './services/app.service';
 })
 export class AppComponent {
 
-  constructor(private app: AppService) {
+  constructor(private app: AppService,
+   ) {
    
+
   }
+
+  
+
   //ดึงข้อมูล loading page
   get loading() {return this.app.getLoading; }
 }

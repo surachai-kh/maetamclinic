@@ -22,7 +22,13 @@ const routes: Routes = [
     path: 'vaccine',
     loadChildren: () => import('./vaccine/vaccine.module')
       .then(m => m.VaccineModule)
-  }
+  },
+
+  {
+    path: 'storage',
+    loadChildren: () => import('./storage/storage.module')
+      .then(m => m.StorageModule)
+  },
 ];
 
 @NgModule({
