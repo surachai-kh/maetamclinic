@@ -6,20 +6,36 @@
 @import "/node_modules/bootstrap/scss/utilities";
 @import "/node_modules/bootstrap/scss/grid";
 
+@font-face {
+    font-family: Mitr-light;
+    src: url(assets/fonts/Mitr/Mitr-Light.ttf) format('truetype');
+}
+
+.Mitr-light {
+    font-family: Mitr-light;
+}
+
+@font-face {
+    font-family: Hind;
+    src: url(assets/fonts/HindSiliguri/HindSiliguri-Bold.ttf) format('truetype');
+}
+
+.Hind {
+    font-family: Hind;
+}
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: #f0f0f4;
-
-    .mat-card {
-        border-radius: 0.1rem;
-    }
 }
 
 .material-icons {
     vertical-align: middle;
 }
+
 html,
 body {
     height: 100%;
+    font-family: 'Muli';
 }
