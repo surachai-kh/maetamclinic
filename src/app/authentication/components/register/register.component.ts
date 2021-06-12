@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   this.app.loading(true);
   this.auth.createUserWithEmailAndPassword(email, password)
     .then((user) => this.router.navigate(['/']))
-    .catch((error) => this.app.dialog(error.message))
+    .catch(error => this.app.errorAlert(error.message))
     .finally(() => this.app.loading(false));
 }
 

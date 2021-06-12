@@ -40,7 +40,7 @@ export class CreateComponent implements OnInit {
       this.app.successAlert('เพิ่มสำเร็จ');
       this.rt.navigate(['/vaccine']);
     })
-    .catch(error => this.app.dialog(error.message))
+    .catch(error => this.app.errorAlert(error.message))
     .finally(() => this.app.loading(false));
   }
 

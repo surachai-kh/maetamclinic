@@ -40,7 +40,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.auth
       .sendPasswordResetEmail(email)
       .then(() => this.router.navigate(['/authentication/login']))
-      .catch(err => this.app.dialog(err.message))
+      .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }
 

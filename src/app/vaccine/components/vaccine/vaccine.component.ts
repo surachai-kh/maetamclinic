@@ -64,25 +64,17 @@ export class VaccineComponent implements OnInit, AfterViewInit {
   }
 
   //ลบข้อมูล
-  onDelete(item: Ivaccine) {
-    Swal.fire({
-      title: "คุณต้องการลบใช่ หรือ ไม่",
-      text: '',
-      icon: 'warning',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      showCancelButton: true,
-      confirmButtonText: "ใช่",
-      cancelButtonText: "ไม่"
-    })
-      .then((getCollection) => {
-        if (!getCollection.value) return;
-        this.app.loading(true);
-        this.service.getCollection.doc(item.id).delete();
-        this.app.successAlert("ลบสำเร็จ");
+  async onDelete(item: Ivaccine) {
+    const confirm = await this.app.confirm("คุณต้องการลบใช่ หรือ ไม่ ?");
+    if (!confirm) return;
+    this.app.loading(true);
+    this.service.getCollection
+      .doc(item.id).delete()
+      .then(() => {
+        this.app.successAlert('ลบสำเร็จแล้ว');
         this.loadVaccine();
       })
-      .catch(error => this.app.errorAlert(error.message))
+      .catch(error => this.app.dialog(error.message))
       .finally(() => this.app.loading(false));
   }
 

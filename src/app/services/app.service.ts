@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
@@ -15,7 +16,8 @@ export class AppService {
 
   constructor(
     private snackbar: MatSnackBar,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private storage: AngularFireStorage
   ) {
     this.loadingSubject = new Subject<boolean>();
   }
@@ -33,7 +35,7 @@ export class AppService {
       duration: 3000
     });
   }
-  //Dialog ยืนยันรายการ
+  // Dialog ยืนยันรายการ
   confirm(message: string) {
     return this.matDialog.open(ConfirmComponent, {
       width: '280px',
@@ -58,4 +60,12 @@ export class AppService {
     })
   }
   
+  warnAlert(message: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: message,
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
 }
