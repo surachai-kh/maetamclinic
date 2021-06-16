@@ -61,7 +61,8 @@ span {
 
 .menu-btn,
 .acc-btn,
-.noti-btn {
+.noti-btn,
+.logout-btn {
     outline: none;
 }
 
@@ -72,6 +73,13 @@ span {
 
 .notification {
     margin-left: 10px;
+}
+
+.logout-btn {
+    &:hover {
+        color: white;
+        background-color: rgb(255, 60, 60);
+    }
 }
 
 // mat-sidenav {

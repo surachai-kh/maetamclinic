@@ -1,45 +1,10 @@
-<div class="">
-    <div class="">
-        <mat-card>
-            <mat-card-title>โปรไฟล์</mat-card-title>
-               <div class="row">
-                <mat-card-content>
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle">
-                    <mat-card>
-                <mat-card-content>
-                            <p class="text-secondary mb-1">Full Stack Developer</p>
-                            <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <button mat-button color="primary">LIKE</button>
-                            <button mat-button color="accent">SHARE</button>
-                        </mat-card-actions>
-                    </mat-card>
-                </mat-card-content>
-                
-                <mat-card-content>
-                    <mat-card>
-                        <mat-card-content>
-                            <span class="text-success d-inline-block mr-3" *ngIf="userLogin.emailVerified">
-                                <mat-icon>privacy_tip</mat-icon> ยืนยันอีเมล์แล้ว
-                            </span>
-        
-                            <a (click)="onVerifyEmail()" class="text-warning d-inline-block mr-3" *ngIf="!userLogin.emailVerified">
-                                <mat-icon>privacy_tip</mat-icon> ยังไม่ได้ยืนยันอีเมล์
-                            </a>
-                        </mat-card-content>
-                    </mat-card>
-                </mat-card-content>
-               </div>
-        </mat-card>
-    </div>
-</div>
 <div class="row mt-3" *ngIf="userLogin">
-    <div class="col-lg-6 offset-lg-3">
+    <!-- <div class="col">
         <mat-card>
             <mat-card-header>
                 <div mat-card-avatar>
-                    <mat-icon class="account-icon">account_circle</mat-icon>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+                        width="45px">
                 </div>
                 <mat-card-title>
                     Welcome
@@ -57,16 +22,132 @@
                     <span class="text-success d-inline-block mr-3" *ngIf="userLogin.emailVerified">
                         <mat-icon>privacy_tip</mat-icon> ยืนยันอีเมล์แล้ว
                     </span>
-
-                    <a (click)="onVerifyEmail()" class="text-warning d-inline-block mr-3" *ngIf="!userLogin.emailVerified">
+                    <a (click)="onVerifyEmail()" class="text-warning d-inline-block mr-3"
+                        *ngIf="!userLogin.emailVerified">
                         <mat-icon>privacy_tip</mat-icon> ยังไม่ได้ยืนยันอีเมล์
                     </a>
-                    
                     <button (click)="onLogout()" mat-raised-button color="warn">
                         <mat-icon>logout</mat-icon> ออกจากระบบ
                     </button>
                 </div>
             </mat-card-content>
         </mat-card>
+    </div> -->
+
+    <div class="container">
+        <div class="main-body">
+            <div class="row gutters-sm">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                    class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4>John Doe</h4>
+                                    <p class="text-secondary mb-1">Full Stack Developer</p>
+                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    Kenneth Valdez
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{userLogin.email}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    (239) 816-9029
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    Bay Area, San Francisco, CA
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info " target="__blank"
+                                        href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gutters-sm">
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="d-flex align-items-center mb-3"><i
+                                            class="material-icons text-info mr-2">pets</i>ชื่อสัตว์</h6>
+                                    <strong>สายพันธ์ุ </strong>
+                                    <small>golden</small>
+                                    <hr>
+                                    <strong>เพศ </strong>
+                                    <small>เพศผู้</small>
+                                    <hr>
+                                    <strong>อายุ </strong>
+                                    <small>1.2ปี</small>
+                                    <hr>
+                                    <strong>สี </strong>
+                                    <small>น้ำตาล</small>
+                                    <hr>
+                                    <strong>ตำหนิ </strong>
+                                    <small>-</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="d-flex align-items-center mb-3"><i
+                                            class="material-icons text-info mr-2">pets</i>ชื่อสัตว์</h6>
+                                    <strong>สายพันธ์ุ </strong>
+                                    <small>persia</small>
+                                    <hr>
+                                    <strong>เพศ </strong>
+                                    <small>เพศผู้</small>
+                                    <hr>
+                                    <strong>อายุ </strong>
+                                    <small>6เดือน</small>
+                                    <hr>
+                                    <strong>สี </strong>
+                                    <small>ขาว</small>
+                                    <hr>
+                                    <strong>ตำหนิ </strong>
+                                    <small>-</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
