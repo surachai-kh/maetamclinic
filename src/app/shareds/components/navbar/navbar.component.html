@@ -7,7 +7,7 @@
     <span class="toolbar-spacer"></span>
     <div class="nav-menu ml-auto">
         <a href="" class="mr-4" routerLinkActive="active">
-            <mat-icon>person</mat-icon>Profile
+            <mat-icon>person</mat-icon>dashboard
         </a>
         <a routerLink="/pets-profile" class="mr-4" routerLinkActive="active">
             <mat-icon>pets</mat-icon>Pets Profile
@@ -22,7 +22,7 @@
             <mat-icon>create_new_folder</mat-icon>Storage
         </a>
 
-        <button routerLink="/authentication" class="btn-login" routerLinkActive="active" mat-flat-button>
+        <button mat-button-raised color="primary" routerLink="/authentication"  routerLinkActive="active" mat-flat-button>
             Login
         </button>
 
@@ -35,11 +35,11 @@
                 <mat-card-subtitle class="text-left">การแจ้งเตือน</mat-card-subtitle>
             </div>
             <mat-divider></mat-divider>
-            <button routerLink="/" class="menu-btn" mat-menu-item>
+            <button routerLink="/appointment" class="menu-btn" mat-menu-item>
                 <mat-icon style="margin-right: 0px;">today</mat-icon>
                 <span>การนัดหมาย</span>
             </button>
-            <button routerLink="/" class="menu-btn" mat-menu-item>
+            <button routerLink="/vaccination" class="menu-btn" mat-menu-item>
                 <mat-icon style="margin-right: 0px;">colorize</mat-icon>
                 <span>กำหนดรับวัคซีน</span>
             </button>
@@ -55,11 +55,11 @@
                 <mat-card-subtitle>Account Email</mat-card-subtitle>
             </div>
             <mat-divider></mat-divider>
-            <button routerLink="/" class="menu-btn" mat-menu-item>
+            <button routerLink="/profile" class="menu-btn" mat-menu-item>
                 <mat-icon style="margin-right: 0px;">manage_accounts</mat-icon>
                 <span>จัดการโปรไฟล์</span>
             </button>
-            <button class="menu-btn" mat-menu-item>
+            <button class="menu-btn" mat-menu-item (click)="onLogout()">
                 <mat-icon style="margin-right: 0px;">logout</mat-icon>
                 <span>ออกจากระบบ</span>
             </button>
