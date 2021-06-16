@@ -6,9 +6,6 @@
     </a>
     <span class="toolbar-spacer"></span>
     <div class="nav-menu ml-auto">
-        <a href="" class="mr-4" routerLinkActive="active">
-            <mat-icon>person</mat-icon>dashboard
-        </a>
         <a routerLink="/pets-profile" class="mr-4" routerLinkActive="active">
             <mat-icon>pets</mat-icon>Pets Profile
         </a>
@@ -22,7 +19,8 @@
             <mat-icon>create_new_folder</mat-icon>Storage
         </a>
 
-        <button mat-button-raised color="primary" routerLink="/authentication"  routerLinkActive="active" mat-flat-button>
+        <button mat-button-raised color="primary" routerLink="/authentication" routerLinkActive="active"
+            mat-flat-button>
             Login
         </button>
 
@@ -59,7 +57,7 @@
                 <mat-icon style="margin-right: 0px;">manage_accounts</mat-icon>
                 <span>จัดการโปรไฟล์</span>
             </button>
-            <button class="menu-btn" mat-menu-item (click)="onLogout()">
+            <button class="logout-btn" mat-menu-item (click)="onLogout()">
                 <mat-icon style="margin-right: 0px;">logout</mat-icon>
                 <span>ออกจากระบบ</span>
             </button>
