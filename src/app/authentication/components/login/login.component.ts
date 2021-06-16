@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     this.auth
       .signInWithPopup(provider)
       .then((user) => this.router.navigate(['/']))
-      .catch((error) => this.app.errorAlert(error.message))
+      .catch((error) => this.app.warnAlert(error.message))
       .finally(() => this.app.loading(false));
   }
   //facebooklogin
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.auth
       .signInWithPopup(provider)
       .then((user) => this.router.navigate(['/']))
-      .catch((error) => this.app.errorAlert(error.message))
+      .catch((error) => this.app.warnAlert(error.message))
       .finally(() => this.app.loading(false));
   }
   

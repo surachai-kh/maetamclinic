@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   }
 
+
   //ออกจากระบบ
   onLogout() {
     this.app.loading(true);

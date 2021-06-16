@@ -29,6 +29,21 @@ const routes: Routes = [
     loadChildren: () => import('./storage/storage.module')
       .then(m => m.StorageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module')
+      .then(m => m.ProfileModule)
+  },
+  {
+    path: 'appointment',
+    loadChildren: () => import('./appointment/appointment.module')
+      .then(m => m.AppointmentModule)
+  },
+  {
+    path: 'vaccination',
+    loadChildren: () => import('./vaccination/vaccination.module')
+      .then(m => m.VaccinationModule)
+  },
 ];
 
 @NgModule({

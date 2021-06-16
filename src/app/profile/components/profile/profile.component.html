@@ -1,0 +1,72 @@
+<div class="">
+    <div class="">
+        <mat-card>
+            <mat-card-title>โปรไฟล์</mat-card-title>
+               <div class="row">
+                <mat-card-content>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle">
+                    <mat-card>
+                <mat-card-content>
+                            <p class="text-secondary mb-1">Full Stack Developer</p>
+                            <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button color="primary">LIKE</button>
+                            <button mat-button color="accent">SHARE</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </mat-card-content>
+                
+                <mat-card-content>
+                    <mat-card>
+                        <mat-card-content>
+                            <span class="text-success d-inline-block mr-3" *ngIf="userLogin.emailVerified">
+                                <mat-icon>privacy_tip</mat-icon> ยืนยันอีเมล์แล้ว
+                            </span>
+        
+                            <a (click)="onVerifyEmail()" class="text-warning d-inline-block mr-3" *ngIf="!userLogin.emailVerified">
+                                <mat-icon>privacy_tip</mat-icon> ยังไม่ได้ยืนยันอีเมล์
+                            </a>
+                        </mat-card-content>
+                    </mat-card>
+                </mat-card-content>
+               </div>
+        </mat-card>
+    </div>
+</div>
+<div class="row mt-3" *ngIf="userLogin">
+    <div class="col-lg-6 offset-lg-3">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon class="account-icon">account_circle</mat-icon>
+                </div>
+                <mat-card-title>
+                    Welcome
+                </mat-card-title>
+                <mat-card-subtitle>
+                    <p>เข้าสู่ระบบโดย {{ userLogin.email }}</p>
+                </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>บัญชีถูกสร้างเมื่อ : {{ userLogin.metadata.creationTime }}</p>
+                <p>เข้าสู่ระบบล่าสุดเมื่อ : {{ userLogin.metadata.lastSignInTime }}</p>
+
+                <div class="text-right mt-4">
+                    <span class="text-success d-inline-block mr-3" *ngIf="userLogin.emailVerified">
+                        <mat-icon>privacy_tip</mat-icon> ยืนยันอีเมล์แล้ว
+                    </span>
+
+                    <a (click)="onVerifyEmail()" class="text-warning d-inline-block mr-3" *ngIf="!userLogin.emailVerified">
+                        <mat-icon>privacy_tip</mat-icon> ยังไม่ได้ยืนยันอีเมล์
+                    </a>
+                    
+                    <button (click)="onLogout()" mat-raised-button color="warn">
+                        <mat-icon>logout</mat-icon> ออกจากระบบ
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
