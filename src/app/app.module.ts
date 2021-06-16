@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { SharedsModule } from './shareds/shareds.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -18,8 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    MatProgressSpinnerModule,
-    
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

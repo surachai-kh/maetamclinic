@@ -3,13 +3,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AppService } from 'src/app/services/app.service';
-
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
 
   //ข้อมูลผู้ใช้ที่ login
   userLogin!: firebase.User;
@@ -18,42 +20,107 @@ export class HomeComponent implements OnInit, OnDestroy {
     private app: AppService,
     private auth: AngularFireAuth,
     private router: Router
-    ) {
+  ) {
     this.loadUserLogin();
-   }
+  }
 
-  ngOnDestroy(){
-   }
+  ngOnDestroy() {
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
   }
 
   //ออกจากระบบ
-  onLogout(){
+  onLogout() {
     this.app.loading(true);
     this.auth.signOut()
-    .then(() => {
-      this.app.successAlert('ออกจากระบบแล้ว')
-      this.router.navigate(['/authentication/login'])
-    })
-    .catch(error => this.app.errorAlert(error.message))
-    .finally(() => this.app.loading(false))
+      .then(() => {
+        this.app.successAlert('ออกจากระบบแล้ว')
+        this.router.navigate(['/authentication/login'])
+      })
+      .catch(error => this.app.errorAlert(error.message))
+      .finally(() => this.app.loading(false))
   }
 
   //ยืนยันอีเมล์
   onVerifyEmail() {
     this.app.loading(true);
     this.userLogin.sendEmailVerification()
-    .then(() => this.app.successAlert('ส่งการยืนยันไปที่อีเมล์แล้ว'))
-    .catch(error => this.app.errorAlert(error.message))
-    .finally(() => this.app.loading(false))
+      .then(() => this.app.successAlert('ส่งการยืนยันไปที่อีเมล์แล้ว'))
+      .catch(error => this.app.errorAlert(error.message))
+      .finally(() => this.app.loading(false))
   }
 
   //load data login user
   private loadUserLogin() {
     this.auth.user.subscribe(user => {
-     if(user) this.userLogin = user;
+      if (user) this.userLogin = user;
     });
   }
 
+  //Bar chart
+  barChartType: ChartType = 'bar';
+  barChartLabels: Label[] = ['Cats', 'Dogs', 'Rabbits', 'Birds'];
+  barChartData: ChartDataSets[] = [
+    {
+      label: 'จำนวนสัตว์เลี้ยง',
+      data: [40, 48, 40, 20],
+      backgroundColor: ['rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)'
+      ],
+      borderColor: ['rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)'
+      ],
+      borderWidth: 2,
+      hoverBackgroundColor: '#CCD1D1',
+      hoverBorderColor: '#99A3A4',
+      hoverBorderWidth: 2
+    }
+  ];
+  barChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  };
+  barChartLegend = true;
+  barChartPlugins = [];
+
+  //Pie chart
+  pieChartType: ChartType = 'pie';
+  pieChartLabels: Label[] = ['Cats', 'Dogs', 'Rabbits', 'Birds'];
+  pieChartData: ChartDataSets[] = [
+    {
+      data: [40, 48, 40, 20],
+      backgroundColor: ['rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)'
+      ],
+      borderColor: ['rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)'
+      ],
+      borderWidth: 2,
+      hoverBackgroundColor: '#CCD1D1',
+      hoverBorderColor: '#99A3A4',
+      hoverBorderWidth: 2
+    }
+  ];
+  pieChartOptions: ChartOptions = {
+    responsive: true
+  };
+  pieChartLegend = true;
+  pieChartPlugins = [];
 }

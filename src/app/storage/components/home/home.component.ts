@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   //ชื่อไฟล์
   fileItems: File[] = [];
 
-  //สร้าง imagerefผ
+  //สร้าง imageref
   imageRef: AngularFireStorageReference;
 
   listImageItems: Array<firebase.storage.Reference & { url?: string; }> = [];
@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  //ลบรูป
 
+  //ลบรูป
   async onDeleteFile(item: firebase.storage.Reference, index: number) {
     const confirm = await this.app.confirm('คุณต้องการลบใช่ หรือ ไม่');
     if (!confirm) return;
@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
       .then(() => {
         this.app.successAlert('ลบสำเร็จแล้ว');
         this.listImageItems.splice(index, 1);
-
       })
       .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
@@ -46,7 +45,7 @@ export class HomeComponent implements OnInit {
   //อัฟโหลดไฟล์
   onuploadFile(): any {
     if (this.fileItems.length <= 0) return this.app.warnAlert('กรุณาเลือกรูปภาพที่จะอัปโหลด');
-    const fileUpload = this.fileItems.map(file =>{
+    const fileUpload = this.fileItems.map(file => {
       const ref = this.imageRef.child(file.name) as AngularFireStorageReference
       return ref.put(file);
     });
@@ -64,7 +63,7 @@ export class HomeComponent implements OnInit {
         });
       })
       .catch(error => this.app.errorAlert(error.message))
-      .finally(()=> this.app.loading(false))
+      .finally(() => this.app.loading(false))
   }
 
   //เมื่อเลือกไฟล์ที่ต้องการอัปโหลด
@@ -87,13 +86,13 @@ export class HomeComponent implements OnInit {
   //ดึงข้อมูลรูปภาพที่อัปโหลดแล้ว
 
   private loadimageUploaded() {
-      this.imageRef.listAll().subscribe(list => {
-        this.fileItems = [];
-        list.items.forEach(async img => {
-          const url = await img.getDownloadURL();
-          (img as any).url = url;
-          this.listImageItems.push(img);
-        });
+    this.imageRef.listAll().subscribe(list => {
+      this.fileItems = [];
+      list.items.forEach(async img => {
+        const url = await img.getDownloadURL();
+        (img as any).url = url;
+        this.listImageItems.push(img);
       });
-    }
+    });
+  }
 }

@@ -5,8 +5,6 @@ import { MaterialModule } from './material-module';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     NavbarComponent,

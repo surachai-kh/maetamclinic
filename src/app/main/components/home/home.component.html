@@ -1,4 +1,4 @@
-<div class="row mt-3" *ngIf="userLogin">
+<!-- <div class="row mt-3" *ngIf="userLogin">
     <div class="col-lg-6 offset-lg-3">
         <mat-card>
             <mat-card-header>
@@ -29,6 +29,44 @@
                     <button class="btn" (click)="onLogout()" mat-raised-button color="warn">
                         <mat-icon>logout</mat-icon> ออกจากระบบ
                     </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div> -->
+
+
+<div class="row">
+    <div class="col">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    <mat-icon>pets</mat-icon>
+                    สถิติสัตว์เลี้ยง
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="pet-stat">
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                        [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                    </canvas>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    <mat-icon>pets</mat-icon>
+                    สถิติสัตว์เลี้ยง
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="pet-stat">
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions"
+                        [plugins]="pieChartPlugins" [legend]="pieChartLegend" [chartType]="pieChartType">
+                    </canvas>
                 </div>
             </mat-card-content>
         </mat-card>
