@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '', component: ProfileComponent,
     canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: () => redirectEmailVerified(['/authentication/login']) }
+    // data: { authGuardPipe: () => redirectEmailVerified(['/authentication/login']) }
   }
 ];
 
