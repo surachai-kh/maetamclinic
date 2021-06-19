@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage'
 import { AppService } from 'src/app/services/app.service';
 import firebase from 'firebase';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,15 +30,25 @@ export class HomeComponent implements OnInit {
   }
 
   //ลบรูป
-  async onDeleteFile(item: firebase.storage.Reference, index: number) {
-    const confirm = await this.app.confirm('คุณต้องการลบใช่ หรือ ไม่');
-    if (!confirm) return;
-    this.app.loading(true);
-    item.delete()
-      .then(() => {
+  onDeleteFile(item: firebase.storage.Reference, index: number) {
+    Swal.fire({
+      title: 'คุณต้องการลบ ใช่ หรือ ไม่',
+      text: '',
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      showCancelButton: true,
+      confirmButtonText: "ใช่",
+      cancelButtonText: "ไม่"
+    }).then(result => {
+      if (result.value) {
+        this.app.loading(true);
+        item.delete()
         this.app.successAlert('ลบสำเร็จแล้ว');
         this.listImageItems.splice(index, 1);
-      })
+        
+      }
+    })
       .catch(error => this.app.errorAlert(error.message))
       .finally(() => this.app.loading(false));
   }

@@ -19,25 +19,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     private app: AppService,
     private auth: AngularFireAuth,
     private router: Router
-<<<<<<< HEAD
+
   ) {
   }
-=======
-  ) {}
->>>>>>> 67990c33d9d0c439ffb90229625e24c4535e8e2b
 
   ngOnDestroy() {
   }
 
   ngOnInit() {
-<<<<<<< HEAD
 
-  }
-=======
-  }
+}
 
->>>>>>> 67990c33d9d0c439ffb90229625e24c4535e8e2b
-  //Bar chart
+//Bar chart
   barChartType: ChartType = 'bar';
   barChartLabels: Label[] = ['Cats', 'Dogs', 'Rabbits', 'Birds'];
   barChartData: ChartDataSets[] = [
@@ -101,4 +94,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   };
   pieChartLegend = true;
   pieChartPlugins = [];
-}
+  }

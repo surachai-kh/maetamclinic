@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorageReference } from '@angular/fire/storage';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,6 +17,7 @@ export class VaccineComponent implements OnInit, AfterViewInit {
 
   displayedColumns = [
     'id',
+    'image',
     'name',
     'type',
     'serail',
@@ -63,19 +65,29 @@ export class VaccineComponent implements OnInit, AfterViewInit {
     this.rt.navigate(['/vaccine/update', item.id]);
   }
 
+  
   //ลบข้อมูล
-  async onDelete(item: Ivaccine) {
-    const confirm = await this.app.confirm("คุณต้องการลบใช่ หรือ ไม่ ?");
-    if (!confirm) return;
-    this.app.loading(true);
-    this.service.getCollection
-      .doc(item.id).delete()
-      .then(() => {
-        this.app.successAlert('ลบสำเร็จแล้ว');
-        this.loadVaccine();
-      })
-      .catch(error => this.app.dialog(error.message))
-      .finally(() => this.app.loading(false));
+  onDelete(item: Ivaccine) {
+    Swal.fire({
+      title: 'คุณต้องการลบ ใช่ หรือ ไม่',
+      text:'',
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      showCancelButton: true,
+      confirmButtonText: "ใช่",
+      cancelButtonText: "ไม่"
+    }).then(result => {
+      if(result.value){
+        this.service.deleteCollection(item.id)
+        .then(() => {
+          this.app.successAlert('ลบสำเร็จแล้ว');
+          this.loadVaccine();
+        })
+        .catch(error => this.app.errorAlert(error.message))
+        .finally(() => this.app.loading(false));
+      }
+    })
   }
 
   //โหลดข้อมูล
@@ -83,7 +95,12 @@ export class VaccineComponent implements OnInit, AfterViewInit {
     this.service.getCollection.get().subscribe((querySnapshot) => {
       this.dataSource.data = [];
       querySnapshot.forEach(doc => {
-        this.dataSource.data.push({ ...doc.data(), id: doc.id });
+        const data = { ...doc.data(), id: doc.id };
+        if (data.image) {
+          const ref = this.service.getStorage.child(data.image) as AngularFireStorageReference;
+          data.image = ref.getDownloadURL();
+        }
+        this.dataSource.data.push(data);
       });
       this.dataSource.data
         .sort((a, b) => b.created - a.created)

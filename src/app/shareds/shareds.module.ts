@@ -4,7 +4,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from './material-module';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { RouterModule } from '@angular/router';
-
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -13,7 +12,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     NavbarComponent
