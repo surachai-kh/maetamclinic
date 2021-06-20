@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import { VaccineService } from '../vaccine/services/vaccine.service';
@@ -21,7 +22,8 @@ export class CreateComponent implements OnInit {
     private fb: FormBuilder,
     private service: VaccineService,
     private app: AppService,
-    private rt: Router
+    private rt: Router,
+    private dom: DomSanitizer
   ) {
     this.createForm();
     this.vaccinetype = this.service.getVaccinetype();
@@ -44,13 +46,34 @@ export class CreateComponent implements OnInit {
     .finally(() => this.app.loading(false));
   }
 
+  /** แปลงข้อมูล File Input เป็น URL */
+  get getFileUpload() {
+    const imageForm = this.form.get('image');
+    if (!imageForm) return;
+    if (!imageForm.value) return;
+    const file = imageForm.value as File;
+    return this.dom.bypassSecurityTrustUrl(URL.createObjectURL(file));
+  }
+
+  /** เมื่อเลือกไฟล์อัพโหลด */
+  onChangeFile(input: HTMLInputElement) {
+    const imageForm = this.form.get('image');
+    if (!imageForm) return;
+    const { files } = input;
+    if (files && files.length > 0) {
+      const file = files[0];
+      imageForm.setValue(file);
+    }
+  }
+
   //สร้างฟอร์มช้อมูล
   private createForm() {
     this.form = this.fb.group({
       name: ['', Validators.required],
       type: ['', Validators.required],
       serail: ['', Validators.required],
-      exp: ['', Validators.required]
+      exp: ['', Validators.required],
+      image: ['']
     })
   }
 }

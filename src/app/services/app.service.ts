@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ThemeService } from 'ng2-charts';
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { ConfirmComponent } from '../shareds/components/confirm/confirm.component';
+import { VaccineService } from '../vaccine/components/vaccine/services/vaccine.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,8 @@ export class AppService {
   constructor(
     private snackbar: MatSnackBar,
     private matDialog: MatDialog,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private vs: VaccineService
   ) {
     this.loadingSubject = new Subject<boolean>();
   }
@@ -38,7 +41,6 @@ export class AppService {
   // Dialog ยืนยันรายการ
   confirm(message: string) {
     return this.matDialog.open(ConfirmComponent, {
-      width: '280px',
       data: message,
       disableClose: true
     }).afterClosed().toPromise<boolean>();

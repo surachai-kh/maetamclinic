@@ -29,6 +29,16 @@
                 <td mat-cell *matCellDef="let element"> {{element.index}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> รูปภาพ </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="img-container">
+                        <img [src]="element.image | async"
+                            onerror="this.src='https://firebasestorage.googleapis.com/v0/b/maetamvetclinic.appspot.com/o/web-images%2Fno-image.png?alt=media&token=b157b5e8-4e4a-49d6-92c6-6280a994f464'">
+                    </div>
+                </td>
+            </ng-container>
+
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ชื่อวัคซีน </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>

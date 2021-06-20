@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AppService } from 'src/app/services/app.service';
 import firebase from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -19,8 +18,7 @@ export class ProfileComponent implements OnInit {
     private app: AppService,
     private auth: AngularFireAuth,
     private router: Router,
-    private db: AngularFirestore,
-    private service: AuthService
+    private db: AngularFirestore
   ) { 
     this.loadUserLogin();
   }
@@ -43,12 +41,4 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getUsers() {
-    this.service.getCollection.get().subscribe((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-      });
-  });
-  }
 }
