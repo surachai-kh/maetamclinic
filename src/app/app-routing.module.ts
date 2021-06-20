@@ -44,6 +44,11 @@ const routes: Routes = [
     loadChildren: () => import('./vaccination/vaccination.module')
       .then(m => m.VaccinationModule)
   },
+  {
+    path: 'history',
+    loadChildren: () => import('./history/history.module')
+      .then(m => m.HistoryModule)
+  },
 ];
 
 @NgModule({
