@@ -4,7 +4,6 @@ import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentComponent } from './components/appointment/appointment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shareds/material-module';
-import { jqxSchedulerModule } from 'jqwidgets-ng/jqxscheduler';
 @NgModule({
   declarations: [
     AppointmentComponent
@@ -14,11 +13,7 @@ import { jqxSchedulerModule } from 'jqwidgets-ng/jqxscheduler';
     AppointmentRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule,
-    jqxSchedulerModule
-  ],
-  providers: [],
-  bootstrap: [AppointmentComponent],
-  exports: [jqxSchedulerModule]
+    ReactiveFormsModule
+  ]
 })
 export class AppointmentModule { }
