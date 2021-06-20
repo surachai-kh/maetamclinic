@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
@@ -10,7 +10,7 @@ import { Label } from 'ng2-charts';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
 
   //ข้อมูลผู้ใช้ที่ login
   userLogin!: firebase.User;
@@ -19,24 +19,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     private app: AppService,
     private auth: AngularFireAuth,
     private router: Router
-<<<<<<< HEAD
-  ) {
-  }
-=======
   ) {}
->>>>>>> 67990c33d9d0c439ffb90229625e24c4535e8e2b
-
-  ngOnDestroy() {
-  }
 
   ngOnInit() {
-<<<<<<< HEAD
-
-  }
-=======
   }
 
->>>>>>> 67990c33d9d0c439ffb90229625e24c4535e8e2b
   //Bar chart
   barChartType: ChartType = 'bar';
   barChartLabels: Label[] = ['Cats', 'Dogs', 'Rabbits', 'Birds'];

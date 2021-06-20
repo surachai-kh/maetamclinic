@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire';
@@ -11,7 +13,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   declarations: [
     AppComponent
   ],
-  imports: [
+  imports: [ 
+    FormsModule,  
+    MbscModule, 
     BrowserModule,
     SharedsModule,
     AppRoutingModule,
